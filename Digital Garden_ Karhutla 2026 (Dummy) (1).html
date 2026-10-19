@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digital Garden: Karhutla 2026 (Dummy)</title>
+<style>
+:root{--bg:#f6f4ee;--sf:#fff;--tx:#1d1d1b;--mu:#6b6a63;--bd:#d9d6cb;--ok:#2f7d4f;--ai:#b7791f;--fl:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171815;--sf:#22231f;--tx:#ecebe4;--mu:#a09f94;--bd:#3a3b35;--ok:#5fbf86;--ai:#e0a947;--fl:#ef7b6d}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:16px}
+.w{max-width:1040px;margin:0 auto}
+h1{font:600 20px/1.3 Georgia,serif;margin:0 0 2px}
+.sub{color:var(--mu);font-size:13px;margin:0 0 12px}
+.flow{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;margin-bottom:12px}
+.flow span{padding:3px 9px;border:1px solid var(--bd);border-radius:99px;color:var(--mu)}
+.flow span.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+.seg button{background:var(--sf);color:var(--tx);border:0;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
+.seg button.on{background:var(--tx);color:var(--bg)}
+.lg{font-size:12px;color:var(--mu);display:flex;gap:12px;flex-wrap:wrap}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.card b{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mu)}
+.card p{margin:4px 0 0}
+.map{background:var(--sf);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:system-ui,sans-serif;fill:var(--tx)}
+.nd{cursor:pointer}
+.nd:hover rect{stroke-width:2.5}
+#pn{margin-top:12px;min-height:120px}
+#pn h3{margin:0 0 4px;font-size:16px}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid;margin-right:6px}
+.mt{font-size:13px;color:var(--mu);margin-top:6px}
+.ed{margin-top:8px;padding:8px 10px;border-left:3px solid var(--fl);background:var(--bg);font-size:13px}
+.act{margin-top:8px;display:flex;gap:6px}
+.act span{font-size:12px;border:1px dashed var(--bd);border-radius:6px;padding:3px 8px;color:var(--mu)}
+.hint{font-size:12px;color:var(--mu);margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Digital Garden: Karhutla 2026</h1>
+<p class="sub">Dummy project Jurnalistik Kontemporer. Korpus tunggal: transkrip video “Update Karhutla” (data per 12 Okt 2026). Dimensi: Teknologi (utama), Genre & Format.</p>
+<div class="flow" id="flow"></div>
+<div class="bar">
+<div class="seg"><button id="bR" class="on">Mode Redaksi</button><button id="bP">Mode Pembaca</button></div>
+<div class="seg"><button id="vM" class="on">Peta</button><button id="vA">Alur Cerita</button></div>
+<div class="lg" id="lg"></div>
+</div>
+<div class="card" id="cc"></div>
+<div class="map"><svg id="sv" viewBox="0 0 1000 640" role="img" aria-label="Mindmap karhutla"></svg></div>
+<div class="map" id="al" style="display:none"></div>
+<p class="hint">Peta: klik cabang untuk mengurai, klik titik untuk membaca fakta dan sumbernya; garis putus-putus = hubungan antar-isu. Alur Cerita: fakta yang sama disusun mengikuti kerangka Discovery Map (apa yang terjadi, yang sudah dicoba, berhasil atau gagal, yang masih terbuka).</p>
+<div class="card" id="pn"></div>
+</div>
+<script>
+const ST={ok:['Sumber disebut','--ok'],ai:['Belum diverifikasi','--ai'],fl:['Perlu dicek','--fl']};
+const D=[
+{id:'my',t:'Malaysia',c:'#2a6fb0',L:[
+['Udara tak sehat','ok','Indeks kualitas udara di banyak wilayah mendekati 200. Seremban 186, Johan Setia (Selangor) 182, Kuala Lumpur sempat menyentuh 200.','Departemen Lingkungan Hidup Malaysia (via video)','Video menulis “EQI”; kemungkinan besar maksudnya API/AQI. Samakan istilah.'],
+['Sekolah ditutup','ok','Kementerian Pendidikan menutup sekolah dasar dan menengah di Selangor, Melaka, Johor, Kuala Lumpur, dan Negeri Sembilan; belajar dialihkan daring.','Kementerian Pendidikan Malaysia (via video)',''],
+['Kecelakaan Johor','ai','Pada 8 Oktober, tiga kakak-beradik tewas dalam kecelakaan di Johor saat hendak mengecek apakah sekolah libur.','Tidak disebut','Hubungan sebab dengan kabut asap tidak dijelaskan. Cari laporan polisi/media Malaysia.'],
+['RS kebanjiran pasien','ok','Rumah sakit menerima banyak pasien anak: ISPA, asma, mikoplasma, bronkitis.','BBC News, CNN (via video)',''],
+['Penerbangan dibatalkan','fl','Maskapai murah membatalkan rute Kuala Lumpur–Singapura karena jarak pandang.','Tidak disebut','Nama maskapai di transkrip tidak jelas (“Farfly”). Cek ulang nama aslinya.']]},
+{id:'sg',t:'Singapura',c:'#7a4fb0',L:[
+['AQI 217','ok','Singapura sempat menjadi kota dengan udara terburuk di dunia, AQI 217 (sangat tidak sehat).','BBC News (via video)','Nama platform pemantau di transkrip tidak jelas (“AQR”). Verifikasi.'],
+['Subsidi medis aktif','ok','Pemerintah mengaktifkan lagi skema subsidi perawatan penyakit akibat kabut asap, terakhir aktif 2015.','BBC News (via video)',''],
+['F1 terganggu','ok','Dua balapan F1 di Asia Tenggara awal Oktober terdampak kabut asap. Tidak batal, tetapi sejumlah pembalap protes; suhu kokpit disebut bisa 50°C.','Video (tanpa sumber spesifik)','Angka 50°C perlu sumber.']]},
+{id:'id',t:'Kondisi Indonesia',c:'#c05621',L:[
+['6 provinsi darurat','ok','Sumsel, Jambi, Riau, Kalteng, Kalsel, dan Kalbar berstatus darurat karhutla.','BNPB (via video)',''],
+['Lahan terbakar 527 ha','fl','Lebih dari 527 hektare hangus di 6 provinsi pada akhir September hingga awal Oktober.','Tidak disebut','Angka terasa kecil untuk 6 provinsi darurat. Cek satuan (mungkin ribu hektare) dan sumbernya.'],
+['Hotspot 6.811','ok','Data BNPB 12 Oktober 2026: sekitar 6.811 hotspot. Kementerian Kehutanan mengklaim hotspot turun lebih dari 700 titik.','BNPB; Kemenhut (via video)','Dua klaim berbeda arah. Pertemukan dalam satu paragraf konteks.'],
+['ISPU di atas 1.000','fl','ISPU Palangkaraya 1.231 dan Palembang 1.148; kategori berbahaya mulai 300.','BBC News (via video)','Skala ISPU resmi umumnya berhenti di sekitar 500. Angka ini janggal, wajib dicek.']]},
+{id:'gov',t:'Respons Pemerintah',c:'#2f7d4f',L:[
+['Bantuan asing','ok','Indonesia sempat dibantu pemadam, logistik, dan pesawat dari Jepang, Brasil, Australia, dan AS. Bantuan Jepang dihentikan karena pemerintah menyatakan mampu sendiri.','Video','Cari konfirmasi pemerintah Jepang/Indonesia.'],
+['Tawaran Malaysia','ok','Pada 11 Oktober, Wakil PM Ahmad Zahid Hamidi menyebut Malaysia menawarkan 1 pesawat dan 3 helikopter plus personel; belum dijawab.','Ahmad Zahid Hamidi (via video)',''],
+['Belum bencana nasional','ai','Pemerintah belum menetapkan karhutla sebagai bencana nasional.','Tidak disebut','Cari alasan resmi dan siapa yang menyatakan.'],
+['Rapat darurat Prabowo','ai','Presiden rapat dengan Menko Polkam, Panglima TNI, dan Kapolri; meminta usut tuntas dan izin perusahaan nakal dicabut.','Video','Cari rilis Istana.'],
+['“Beyond human error”','ok','Kepala Bakom menyebut karhutla di luar kesalahan manusia dan menyatakan Indonesia “mengirim oksigen” ke negara tetangga.','Kompas (via video)','Kutipan langsung perlu dicek ke artikel asli.']]},
+{id:'corp',t:'Korporasi & Hukum',c:'#b83280',L:[
+['19 perusahaan terkait','ok','Investigasi Greenpeace Indonesia, Greenpeace Malaysia, dan Pantau Gambut: 19 perusahaan yang diselidiki terhubung dengan perusahaan berbasis Singapura dan Malaysia.','Greenpeace, Pantau Gambut (via video)','Ini temuan LSM, bukan putusan hukum.'],
+['Proses hukum','ok','Polri: lebih dari 100 orang diperiksa, 8 perusahaan diproses. Daftar perusahaan belum dirilis.','Polri (via video)',''],
+['Pola “kroco vs bos”','ai','Opini pembuat video: yang dijerat biasanya pelaku lapangan, bukan pemilik.','Opini','Jangan terbitkan sebagai fakta. Butuh data vonis kasus sebelumnya.']]},
+{id:'sawit',t:'Sawit & Biofuel',c:'#8a6d00',L:[
+['Bibit di lahan bekas bakar','ai','Beredar video lahan yang baru terbakar sudah ditanami bibit sawit. Komisi IV DPR dan Presiden meminta penyelidikan.','Video viral','Keaslian video dan lokasi belum terverifikasi.'],
+['Truk bawa bibit','fl','Video truk berlogo Kopdes mengangkut bibit sawit di tengah kabut asap.','Video viral','Tujuan dan pengangkut belum diketahui. Jangan menyimpulkan.'],
+['Lahan 12 juta ha','ok','Hashim Djojohadikusumo menyebut rencana pemanfaatan lebih dari 12 juta ha untuk biofuel B50–B100, di “hutan terdegradasi”.','Hashim Djojohadikusumo (via video)','Nama di transkrip salah eja. Cocokkan dengan sumber asli.']]},
+{id:'pap',t:'Papua Selatan',c:'#0f766e',L:[
+['Merauke terbakar','ok','Setidaknya 10 distrik di Kabupaten Merauke dilanda karhutla.','CNN (via video)',''],
+['Asap ke Makassar','ok','Pemodelan BMKG: asap tebal terbawa angin ke barat, termasuk Sulawesi Selatan dan Makassar.','BMKG (via video)',''],
+['Epicentrum baru','ai','Greenpeace menyebut Papua menjadi episentrum baru karena makin banyak konsesi dibuka.','Greenpeace (via video)','Cari pernyataan primer. Gubernur menyebut dampak sampai Timika dan Asmat.']]}];
+const X=[['corp','sawit','sama motif: perluasan lahan'],['gov','corp','janji tindak vs bukti'],['id','pap','titik api meluas'],['id','my','asap lintas batas'],['id','sg','asap lintas batas'],['gov','my','bantuan belum dijawab']];
+let mode='R',open=null,sel=null;
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
+function h(t,a,p,x){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!=null)e.textContent=x;p&&p.appendChild(e);return e}
+const CX=500,CY=320;
+const pos=(a,rx,ry)=>[CX+rx*Math.cos(a),CY+ry*Math.sin(a)];
+function draw(){
+const s=$('sv');s.innerHTML='';const n=D.length,bp={};
+D.forEach((b,i)=>{b.a=-Math.PI/2+i*2*Math.PI/n;bp[b.id]=pos(b.a,165,115)});
+X.forEach(([a,b,t])=>{const p=bp[a],q=bp[b];const l=h('path',{d:`M${p[0]} ${p[1]} Q${CX} ${CY} ${q[0]} ${q[1]}`,fill:'none',stroke:'var(--mu)','stroke-width':1.2,'stroke-dasharray':'4 4',opacity:.55},s);h('title',{},l,t)});
+D.forEach(b=>{const p=bp[b.id];h('line',{x1:CX,y1:CY,x2:p[0],y2:p[1],stroke:b.c,'stroke-width':3,opacity:.8},s)});
+D.forEach(b=>{if(open!==b.id)return;const m=b.L.length,sp=Math.min(.2,.9/m);b.L.forEach((l,j)=>{
+const a=b.a+(j-(m-1)/2)*sp,p=pos(a,340,248),q=bp[b.id];
+h('line',{x1:q[0],y1:q[1],x2:p[0],y2:p[1],stroke:b.c,'stroke-width':1.6,opacity:.6},s);
+const g=h('g',{class:'nd',tabindex:0},s),c=Math.cos(a),an=c>.25?'start':c<-.25?'end':'middle';
+const col=mode==='R'?`var(${ST[l[1]][1]})`:'var(--bd)';
+const dim=mode==='P'&&l[1]==='fl';
+const tx=h('text',{x:p[0]+(an==='start'?13:an==='end'?-13:0),y:p[1]+(an==='middle'?(Math.sin(a)>0?26:-16):4),'text-anchor':an,'font-size':13,opacity:dim?.45:1},g,l[0]);
+h('circle',{cx:p[0],cy:p[1],r:7,fill:mode==='R'?col:b.c,stroke:sel===l?'var(--tx)':'var(--sf)','stroke-width':sel===l?3:2,opacity:dim?.45:1},g);
+g.onclick=()=>{sel=l;sel.b=b;draw();panel()};});});
+D.forEach(b=>{const p=bp[b.id],g=h('g',{class:'nd',tabindex:0},s);const w=b.t.length*7.6+26;
+h('rect',{x:p[0]-w/2,y:p[1]-16,width:w,height:32,rx:16,fill:b.c,stroke:open===b.id?'var(--tx)':'none','stroke-width':3},g);
+h('text',{x:p[0],y:p[1]+5,'text-anchor':'middle','font-size':13,'font-weight':600,style:'fill:#fff'},g,b.t);
+g.onclick=()=>{open=open===b.id?null:b.id;sel=null;draw();panel()}});
+const r=h('g',{},s);h('circle',{cx:CX,cy:CY,r:54,fill:'var(--tx)'},r);
+h('text',{x:CX,y:CY-3,'text-anchor':'middle','font-size':14,'font-weight':700,style:'fill:var(--bg)'},r,'Karhutla');
+h('text',{x:CX,y:CY+14,'text-anchor':'middle','font-size':12,style:'fill:var(--bg)'},r,'Okt 2026');
+}
+function panel(){
+const p=$('pn');
+if(!sel){const b=D.find(x=>x.id===open);p.innerHTML=b?`<h3>${b.t}</h3><p class="mt">${b.L.length} fakta di cabang ini. Klik salah satu titik untuk membaca detail dan sumbernya.</p>`:`<h3>Mulai dari cabang mana pun</h3><p class="mt">Peta ini punya ${D.length} cabang dan ${D.reduce((a,b)=>a+b.L.length,0)} fakta. Mode Redaksi menunjukkan status verifikasi tiap fakta, Mode Pembaca menunjukkan tampilan akhir yang diterbitkan.</p>`;return}
+const l=sel,st=ST[l[1]];
+let h2=`<h3>${l[0]}</h3><div><span class="tag" style="color:var(--${st[1].slice(2)});border-color:var(--${st[1].slice(2)})">${mode==='P'&&l[1]!=='fl'?'Sumber disebut':mode==='P'?'Sedang diverifikasi':st[0]}</span><span class="mt">${sel.b.t}</span></div><p>${l[2]}</p><div class="mt">Sumber: ${l[3]}</div>`;
+if(mode==='R'){if(l[4])h2+=`<div class="ed"><b>Catatan redaksi:</b> ${l[4]}</div>`;h2+=`<div class="act"><span>✓ Verifikasi</span><span>⚑ Tandai</span><span>+ Tambah sumber</span></div><div class="mt">Jejak: temuan (korpus: transkrip video) → keputusan (${st[0]}) → hasil (ditayangkan atau ditahan)</div>`}
+else h2+=`<div class="mt">Sumber asli: tautan akan muncul di versi terbit.</div>`;
+p.innerHTML=h2}
+function head(){
+$('flow').innerHTML=['1 Ingesti','2 Auto-mindmap (AI)','3 Kurasi jurnalis','4 Terbit interaktif'].map((t,i)=>`<span class="${(mode==='R'?i===2:i===3)?'on':''}">${t}</span>`).join('');
+$('lg').innerHTML=mode==='R'?Object.values(ST).map(v=>`<span><i style="background:var(${v[1]})"></i>${v[0]}</span>`).join(''):'';
+$('cc').innerHTML=mode==='R'?`<b>Draf konklusi (diisi jurnalis)</b><p>Belum final. ${D.reduce((a,b)=>a+b.L.filter(l=>l[1]==='fl').length,0)} fakta ditandai “perlu dicek” dan harus selesai sebelum terbit.</p>`:`<b>Konklusi utama</b><p>Kabut asap karhutla kini melintasi batas negara dan terukur di tiga negara. Di dalam negeri, pertanyaan terbesar bukan jumlah titik api, melainkan apakah perusahaan di balik pembakaran akan diproses hingga ke pemiliknya.</p>`}
+let view='M';
+const SN=['Apa yang terjadi','Apa yang sudah dicoba','Berhasil atau gagal?','Masih terbuka'];
+const SG={'Subsidi medis aktif':1,'Bantuan asing':1,'Rapat darurat Prabowo':1,'Proses hukum':1,'Tawaran Malaysia':1,'Beyond human error':1,'Hotspot 6.811':2,'Pola kroco vs bos':2,'Belum bencana nasional':3,'19 perusahaan terkait':3,'Lahan 12 juta ha':3,'Epicentrum baru':3};
+function aview(){
+const cols=[[],[],[],[]];
+D.forEach((b,bi)=>b.L.forEach((l,li)=>cols[SG[l[0].replace(/[“”]/g,'')]||0].push([b,l,bi,li])));
+$('al').innerHTML='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;padding:12px">'+cols.map((c,i)=>`<div><div class="mt" style="margin:0 0 6px"><b>${i+1}. ${SN[i]}</b></div>${c.map(([b,l,bi,li])=>`<div class="it" data-b="${bi}" data-l="${li}" style="border-left:4px solid ${b.c};background:var(--bg);padding:6px 8px;margin-bottom:6px;border-radius:6px;cursor:pointer;font-size:13px;opacity:${mode==='P'&&l[1]==='fl'?.45:1};outline:${sel===l?'2px solid var(--tx)':'none'}">${mode==='R'?`<i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(${ST[l[1]][1]});margin-right:5px"></i>`:''}${l[0]}<div class="mt" style="margin:0;font-size:11px">${b.t}</div></div>`).join('')}</div>`).join('')+'</div>'+(mode==='R'?'<p class="hint" style="padding:0 12px 12px">Catatan redaksi: kolom 3 paling tipis. Korpus tidak memuat bukti keberhasilan atau kegagalan upaya penanganan; ini celah riset untuk P11.</p>':'');
+$('al').querySelectorAll('.it').forEach(e=>e.onclick=()=>{const b=D[e.dataset.b];sel=b.L[e.dataset.l];sel.b=b;aview();panel()})}
+function setV(v){view=v;$('vM').className=v==='M'?'on':'';$('vA').className=v==='A'?'on':'';$('sv').parentNode.style.display=v==='M'?'':'none';$('al').style.display=v==='A'?'':'none';v==='A'?aview():draw();panel()}
+function setM(m){mode=m;$('bR').className=m==='R'?'on':'';$('bP').className=m==='P'?'on':'';head();view==='A'?aview():draw();panel()}
+$('bR').onclick=()=>setM('R');$('bP').onclick=()=>setM('P');$('vM').onclick=()=>setV('M');$('vA').onclick=()=>setV('A');
+setM('R');
+</script>
+</body>
+</html>
